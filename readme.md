@@ -1,6 +1,8 @@
 # test
 node . --op getUsers
 
+`checkout https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-nodejs-console`
+
 ```shell
 
 You have selected: getUsers
