@@ -55,8 +55,68 @@ app.get('/redirect', (req, res) => {
     }).catch((error) => {
         console.log(error);
         res.status(500).send(error);
-    });
+    }); 1
 });
+
+
+
+
+
+
+const axios = require("axios");
+
+app.get('/register', (req, res) => {
+
+    // Request API.
+    // Add your own code here to customize or restrict how the public can register new users.
+    axios
+    .post('http://localhost:1337/api/auth/local/register', {
+        username:'cc@cc.io',
+        identifier: 'cc1@cc.io',
+        email:'cc@cc.io',
+        password: 'cC123456',
+    })
+    .then((response) => {
+        // Handle success.
+        // console.log('Well done!');
+        // console.log('User profile', response.data.user);
+        // console.log('User token', response.data.jwt);
+        res.status(200).send("ok");  
+    })
+    .catch((error) => {
+        // Handle error.
+        // console.log('An error occurred:', error.response);
+        res.status(200).send("error");  
+    });
+
+
+})
+
+
+
+
+
+
+app.get('/login', (req, res) => {
+
+    axios.post('http://localhost:1337/api/auth/local', {
+        identifier: 'cc@cc.io',
+        password: 'cC123456',
+    }).then((response) => {
+            // Handle success.
+            console.log('Well done!');
+            // console.log('User profile', response.data.user);
+            // console.log('User token', response.data.jwt);
+            res.status(200).send(JSON.stringify(response.data));  
+        })
+        .catch((error) => {
+            // Handle error.
+            // console.log('An error occurred:', error.response);
+            res.status(200).send(JSON.stringify(error.response.data));
+        });
+
+
+})
 
 
 
